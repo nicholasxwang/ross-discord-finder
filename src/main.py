@@ -1,14 +1,11 @@
 # Find Mr. Ross's Discord
 from selenium.webdriver import Keys
-
 rossusername = "grandadmiralcrunch"
-
 from dotenv import load_dotenv
 load_dotenv()
 import time, os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
 username = os.getenv("username")
 vpn = False
 password = os.getenv("password")
@@ -16,6 +13,7 @@ password = os.getenv("password")
 
 def clear():
     os.system("clear")
+
 def taskit(task):
     clear()
     print("TASK: "+task)
@@ -55,20 +53,20 @@ names = []
 for i in range(1, 9999):
     i = str(i)
     i = (4-len(i))*"0"+i
-    # names.append(rossusername+"#"+i)
-    #driver.find_element_by_id("uid_16").send_keys(rossusername+"#"+i)
     driver.find_element_by_id("uid_19").send_keys(rossusername+"#"+i)
     timer(1, "Preparing to Click")
-    driver.find_elements_by_class_name("button-f2h6uQ")[3].click()
-    # if (len(driver.find_element_by_class_name("but ton-f2h6uQ"))>4):
-    #     names.append("Failure -> "+rossusername+"#"+i)
-    #     driver.find_element_by_class_name("button-f2h6uQ")[4].click()
-    # else:
-    #     names.append("Pass -> "+rossusername+"#"+i)
-    #timer(10, "Waiting for User to Observe")
+    # driver.find_element_by_id("uid_16").send_keys(Keys.RETURN)
+    # driver.find_element_by_id("uid_19").send_keys(Keys.RETURN)
+    driver.find_elements_by_class_name("button-f2h6uQ")[3].send_keys(Keys.RETURN)
+    # driver.find_element_by_class_name()
+
+    #driver.find_element_by_id("uid_19").click()
+    #driver.find_elements_by_class_name("button-f2h6uQ")[4].click()
+    timer(20, "Waiting for Discord")
+    #driver.find_elements_by_class_name("button-f2h6uQ")[4].send_keys(Keys.RETURN)
+    driver.find_elements_by_class_name("button-f2h6uQ")[-1].send_keys(Keys.RETURN)
     try:
         names.append("Failure -> "+rossusername+"#"+i)
-    #     driver.find_element_by_class_name("button-f2h6uQ")[4].click()
     except:
         names.append("Pass -> "+rossusername+"#"+i)
 for i in names:
